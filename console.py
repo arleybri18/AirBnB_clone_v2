@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
                         setattr(obj, key, int(value))
                     elif value.replace('.', '', 1).isdigit():
                         setattr(obj, key, float(value))
-                    elif value[0] is '"' and value[-1] is '"':
+                    else:
                         value = value.replace('_', ' ')
                         new_value = ""
                         for index, iter in enumerate(value):
