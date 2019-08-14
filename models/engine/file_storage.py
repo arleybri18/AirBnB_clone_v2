@@ -32,7 +32,7 @@ class FileStorage:
                 nm_cls = key.split(".")[0]
                 if cls.__name__ == nm_cls:
                     list_dict[key] = self.__objects[key]
-                    return list_dict
+            return list_dict
         return self.__objects
 
     def new(self, obj):
@@ -75,5 +75,7 @@ class FileStorage:
 
     @property
     def cities(self):
-        dict_cls = self.all('City')
-        print(dict_cls)
+        dict_cls = self.all(City)
+        print(State.id)
+        for key, value in dict_cls.items():
+            print(value.state_id)
