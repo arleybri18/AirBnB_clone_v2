@@ -29,11 +29,11 @@ class FileStorage:
         list_dict = {}
         if cls is not None:
             for key in self.__objects.keys():
-                if cls.__name__ in key.split(".")[0]:
-                    list_dict[key] = __objects[key]
+                nm_cls = key.split(".")[0]
+                if cls.__name__ == nm_cls:
+                    list_dict[key] = self.__objects[key]
                     return list_dict
-        else:
-            return self.__objects
+        return self.__objects
 
     def new(self, obj):
         """sets __object to given obj
