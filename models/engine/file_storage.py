@@ -72,3 +72,8 @@ class FileStorage:
             if key_obj in self.__objects.keys():
                 del self.__objects[key_obj]
                 self.save()
+
+    @property
+    def cities(self):
+        dict_cls = self.all('City')
+        print(dict_cls)
