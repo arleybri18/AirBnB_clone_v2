@@ -40,8 +40,8 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     amenity_ids = []
     reviews = relationship("Review", backref="place")
-    amenities = relationship("Amenity", secondary='place_amenity',
-                             viewonly=False)
+    amenities = relationship("Amenity", secondary=place.place_amenity,
+                             viewonly=False, backref='place_amenities')
 
     @property
     def reviews(self):
