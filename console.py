@@ -54,12 +54,7 @@ class HBNBCommand(cmd.Cmd):
                         setattr(obj, key, float(value))
                     else:
                         value = value.replace('_', ' ')
-                        new_value = ""
-                        for index, iter in enumerate(value):
-                            if index > 0 and index < len(value) - 1:
-                                new_value += iter.replace('"', '\\"')
-                            else:
-                                new_value += iter
+                        new_value = value[1:-1]
                         setattr(obj, key, new_value)
             obj.save()
             print("{}".format(obj.id))
