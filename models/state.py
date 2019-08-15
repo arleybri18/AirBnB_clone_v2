@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 import models
 
+
 class State(BaseModel, Base):
     """class state inherith from Base"""
     __tablename__ = 'states'
