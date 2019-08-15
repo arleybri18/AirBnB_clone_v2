@@ -38,7 +38,7 @@ class DBStorage:
                 dict_query[key + iter.id] = iter
             return dict_query
         else:
-            for allclass_iter in [State, City, User, Place, Review]:
+            for allclass_iter in [State, City, User, Place, Review, Amenity]:
                 query = self.__session.query(allclass_iter).all()
                 key = allclass_iter.__name__ + '.'
                 for iter in query:
