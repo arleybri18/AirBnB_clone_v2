@@ -2,9 +2,11 @@
 """This is the user class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+import models
 
 
-class User(BaseModel):
+class User(BaseModel, Base):
     """Class state inherit from Base
     Attributes:
         email: email address
@@ -17,3 +19,4 @@ class User(BaseModel):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=False)
     last_name = Column(String(128), nullable=False)
+    places = relationship("Place", cascade="all, delete-orphan", backref="user")
