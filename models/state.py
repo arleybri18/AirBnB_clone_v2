@@ -15,7 +15,6 @@ class State(BaseModel, Base):
     @property
     def cities(self):
         dict_cls = models.storage.all(models.City)
-        print("Este es el diccionario\n {}\n------\n\n".format(dict_cls))
         city_list = []
         for key, value in dict_cls.items():
             if value.state_id == self.id:
