@@ -5,9 +5,11 @@ from sqlalchemy import Column, Float, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 import models
 
-place_amenity = Table('place_amenity', Base.metadata, 
-Column('place_id', String(60), ForeignKey('places.id'), nullable=False),
-Column('amenity_id', String(60), ForeignKey('amenities.id'), nullable=False))
+place_amenity = Table('place_amenity', Base.metadata,
+                      Column('place_id', String(60), ForeignKey('places.id'),
+                             nullable=False),
+                      Column('amenity_id', String(60), ForeignKey
+                             ('amenities.id'), nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -38,10 +40,13 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     amenity_ids = []
     reviews = relationship("Review", backref="place")
-    amenities = relationship("Amenity", secondary = 'place_amenity', viewonly=False)
+    amenities = relationship("Amenity", secondary='place_amenity',
+                             viewonly=False)
 
     @property
     def reviews(self):
+        """getter attribute reviews that returns the list of
+        Review instances with place_id equals to the current Place.id"""
         dict_cls = models.storage.all(models.Review)
         review_list = []
         for key, value in dict_cls.items():
@@ -51,6 +56,9 @@ class Place(BaseModel, Base):
 
     @property
     def amenities(self):
+        """Getter attribute amenities that returns the list of
+        Amenity instances based on the attribute amenity_ids that
+        contains all Amenity.id """
         dict_cls = models.storage.all(models.Amenity)
         amenity_list = []
         for key, value in dict_cls.items():
@@ -61,5 +69,7 @@ class Place(BaseModel, Base):
 
     @amenities.setter
     def amenities(self, obj):
+        """Setter attribute amenities that handles append method
+        for adding an Amenity.id """
         if obj.__name__ == Amenity:
             self.amenity_ids.append(obj.id)
