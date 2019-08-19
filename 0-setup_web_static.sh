@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # This script configure my server for webstatic
 
+# validate if exists nginx
+if [[ ! -x /usr/sbin/nginx ]]; then
+    sudo apt-get -y update
+    sudo apt-get -y install nginx
+fi
+
 # create directories and file
 sudo mkdir -p /data/web_static/releases/test
 sudo mkdir -p /data/web_static/shared
