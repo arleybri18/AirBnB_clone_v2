@@ -55,6 +55,7 @@ def deploy():
 
 
 def do_clean(number=0):
+    """ Clean directories """
     count = local("ls versions | wc -l", capture=True)
     r_dir = "/data/web_static/releases"
     r_count = run("ls /data/web_static/releases | wc -l")
@@ -63,18 +64,16 @@ def do_clean(number=0):
             nm_file = local("ls -1tr versions | head -1", capture=True)
             local("rm versions/{}".format(nm_file))
             count = local("ls versions | wc -l", capture=True)
-        """ while (int(r_count) > 2):
+        while (int(r_count) > 2):
             nm_folder = run("ls -1tr {} | head -1".format(r_dir))
             run("sudo rm -rf {}/{}".format(r_dir, nm_folder))
             r_count = run("ls {} | wc -l".format(r_dir))
-        """
     else:
         while (int(count) > int(number)):
             nm_file = local("ls -1tr versions | head -1", capture=True)
             local("rm versions/{}".format(nm_file))
             count = local("ls versions | wc -l", capture=True)
-        """ while (int(r_count) > int(number)):
+        while (int(r_count) > int(number)):
             nm_folder = run("ls -1tr {} | head -1".format(r_dir))
             run("sudo rm -rf {}/{}".format(r_dir, nm_folder))
             r_count = run("ls {} | wc -l".format(r_dir))
-        """
