@@ -13,6 +13,7 @@ def do_pack():
         "tar -cvzf versions/web_static_$(date '+%Y%m%d%H%M%S').tgz web_static")
 
     if (comp.succeeded):
-        return local("echo \"versions/web_static_$(date '+%Y%m%d%H%M%S').tgz\"")
+        return local(
+            "echo \"versions/web_static_$(date '+%Y%m%d%H%M%S').tgz\"")
     else:
         return None
