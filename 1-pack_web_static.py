@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# this script generate .tgz from the contents of the web_static
+""" This script generate .tgz from the contents of the web_static
+"""
 from fabric.api import local
 
 
