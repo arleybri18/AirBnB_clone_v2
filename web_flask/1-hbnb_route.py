@@ -9,6 +9,7 @@ def hello():
     """ Function to handle request """
     return 'Hello HBNB!'
 
+
 @app.route('/hbnb')
 def hello_hbnb():
     """ Function to handle request to path /hbnb """
