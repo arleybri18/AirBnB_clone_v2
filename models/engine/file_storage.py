@@ -73,6 +73,11 @@ class FileStorage:
                 del self.__objects[key_obj]
                 self.save()
 
+    def close(self):
+        """ call method reload()
+        """
+        self.reload()
+
     @property
     def cities(self):
         dict_cls = self.all(City)
