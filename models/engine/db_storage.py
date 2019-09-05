@@ -80,6 +80,6 @@ class DBStorage:
                 expire_on_commit=False))()
 
     def close(self):
-        """ call method remove of session
+        """ call method close session
         """
-        self._session.remove()
+        self.__session.close()
