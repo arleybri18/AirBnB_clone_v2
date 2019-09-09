@@ -38,8 +38,8 @@ class DBStorage:
         """method must return a dictionary like file storage"""
         dict_query = {}
         if cls:
-            query = self.__session.query(eval(cls)).all()
-            key = eval(cls).__name__ + '.'
+            query = self.__session.query(cls).all()
+            key = cls.__name__ + '.'
             for iter in query:
                 dict_query[key + iter.id] = iter
             return dict_query

@@ -10,7 +10,10 @@ app.url_map.strict_slashes = False
 def states_list():
     """ Function to handle request """
     states = storage.all(State)
-    return render_template('7-states_list.html', states=states)
+    dict_states = {}
+    for _, value in states.items():
+        dict_states[value.id] = value.name
+    return render_template('7-states_list.html', states=dict_states)
 
 
 @app.teardown_appcontext
@@ -19,4 +22,4 @@ def storage_close(exception=None):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
